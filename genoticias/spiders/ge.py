@@ -34,7 +34,12 @@ class GeSpider(scrapy.Spider):
     def parse_noticia(self, response, **kwargs):
         items = GenoticiasItem()
         # Extrai as informações da notícia e atribui aos campos do item
-        items['autor'] = response.css('.content-publication-data__from::text').get()
+        autor = response.css('.content-publication-data__from::text').get()
+        if "Por" in autor:
+            autor = autor.replace("Por", "", 1).strip()  # Remove "Por" e espaços extras
+        if "," in autor:
+            autor = autor.split(",")[0].strip()  # Pega o que está antes da ","
+        items['autor'] = autor
         items['titulo'] = response.css('.content-head__title::text').get()
         items['subtitulo'] = response.css('.content-head__subtitle::text').get()
         items['link'] = kwargs['link']
