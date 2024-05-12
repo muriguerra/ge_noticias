@@ -19,12 +19,13 @@ NEWSPIDER_MODULE = "genoticias.spiders"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
-# Desired file format
-FEED_FORMAT = "csv"
 
 # Name of the file where
-# data extracted is stored
-FEED_URI = "gesports.csv"
+# Desired file format
+# overwrite previous data
+FEEDS = {
+    'gesports.csv': {'format': 'csv', 'overwrite': True}
+}
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32

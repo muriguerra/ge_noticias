@@ -1,4 +1,10 @@
+from typing import Union
+
+import pandas as pd
 import scrapy
+from scrapy import Spider
+from twisted.internet.defer import Deferred
+
 from ..items import GenoticiasItem
 
 
@@ -16,7 +22,7 @@ class GeSpider(scrapy.Spider):
             })
 
         proxima_pagina = 'https://ge.globo.com/esports/index/feed/pagina-' + str(GeSpider.pagina) + '.ghtml'
-        if GeSpider.pagina <= 5:
+        if GeSpider.pagina <= 10:
             GeSpider.pagina += 1
             yield scrapy.Request(proxima_pagina, callback=self.parse)
 
