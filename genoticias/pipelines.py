@@ -10,4 +10,5 @@ from itemadapter import ItemAdapter
 
 class GenoticiasPipeline:
     def process_item(self, item, spider):
+
         return item

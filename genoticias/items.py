@@ -8,5 +8,8 @@ import scrapy
 
 class GenoticiasItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    titulo = scrapy.Field()
+    link = scrapy.Field()
+    autor = scrapy.Field()
+    subtitulo = scrapy.Field()
+    publicacao = scrapy.Field()
